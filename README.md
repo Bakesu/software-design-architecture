@@ -1,42 +1,8 @@
 # Software Design and Architecture
-This repository contains the project developed for the course Software Construction and Software Architecture at Aarhus University. The project showcases various software design patterns and architectural principles applied in a Java-based game called HotCiv.
+This repository contains the project developed for the course Software Construction and Software Architecture at Aarhus University. The project showcases various software design patterns and architectural principles applied in a Java-based game called HotCiv. This project was developed in collaboration with another student, primarily through pair programming.
 
 ## Project Overview
 HotCiv is a turn-based strategy game where players control units and cities on a grid-based map. The game includes different variants, each with unique rules and strategies. This project demonstrates the use of design patterns and architectural principles to create a flexible and extensible game framework.
-
-## Repository Structure
-The repository is organized as follows:
-
-```
-.
-├── .gitignore
-├── .gitlab-ci.yml
-├── build.gradle
-├── gradle.properties
-├── README.md
-├── src/
-│   ├── backlog.txt
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── hotciv/
-│   │   │   │   ├── client/
-│   │   │   │   ├── common/
-│   │   │   │   ├── framework/
-│   │   │   │   ├── server/
-│   │   │   │   ├── standard/
-│   │   │   │   ├── stub/
-│   │   │   │   ├── utility/
-│   │   │   │   ├── view/
-│   │   │   │   ├── visual/
-│   │   │   │   └── variants/
-│   │   ├── resources/
-│   │   │   └── minidraw-images/
-│   ├── specification.md
-│   └── test/
-│       ├── java/
-│       │   └── hotciv/
-│       │       └── standard/
-```
 
 ## Features
 - **Multiple Game Variants**: Implementations of different game rules and strategies, such as AlphaCiv, BetaCiv, and DeltaCiv.
@@ -85,5 +51,44 @@ The repository is organized as follows:
   - Example: [`FractalWorldLayoutStrategyAdapter.java`](src/main/java/hotciv/standard/variants/FractalWorldLayoutStrategyAdapter.java)
   - This class implements the `WorldLayoutStrategy` interface and adapts the `ThirdPartyFractalGenerator` to generate the world layout. By using the adapter pattern, the game can utilize third-party code without modifying it.
 
+## Repository Structure
+The repository is organized as follows:
+
+```
+.
+├── .gitignore
+├── .gitlab-ci.yml
+├── build.gradle
+├── gradle.properties
+├── README.md
+├── src/
+│   ├── backlog.txt
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── hotciv/
+│   │   │   │   ├── client/
+│   │   │   │   ├── common/
+│   │   │   │   ├── framework/
+│   │   │   │   ├── server/
+│   │   │   │   ├── standard/
+│   │   │   │   ├── stub/
+│   │   │   │   ├── utility/
+│   │   │   │   ├── view/
+│   │   │   │   ├── visual/
+│   │   │   │   └── variants/
+│   │   ├── resources/
+│   │   │   └── minidraw-images/
+│   ├── specification.md
+│   └── test/
+│       ├── java/
+│       │   └── hotciv/
+│       │       └── standard/
+```
+
 ## License
 This project is licensed under the MIT License.
+
+## Acknowledgements
+Henrik Bærbak Christensen, Department of Computer Science, Aarhus University
+
+The course Software Construction and Software Architecture at Aarhus University
