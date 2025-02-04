@@ -1,0 +1,14 @@
+#### BACKLOG
+Fix unittest for ThreeStrikesWinnerStrategy and method getWinner so that first player to hit three wins in case both win in same round...
+
+Consider refactoring the code for units movement on desert tiles.
+
+ChangeProductionInCityAt should switch between the different states of unit production
+
+changeWorkForceFocus is a toggle between the two options
+
+
+
+GameBoard to GfxConstants?
+
+General cleanup in Composition

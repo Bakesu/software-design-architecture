@@ -1,0 +1,223 @@
+/* Build file HotCiv mandatory project in SWEA.
+
+  Code **cannot** compile and test using Gradle prior to 4.6, so
+  you need to use the gradle wrapper! And there is a bootstrap
+  issue, as the useJunitPlatform() call in this build file will
+  generate a build failure for gradle 4.4 which is the default
+  on Linux 20.04.
+
+  So - start the project by COMMENTING OUT THE useJUnitPlatform() call
+  in the build file below, and next issuing the following commands in
+  your shell
+
+    gradle wrapper
+
+  Next, remove the comment so the useJUnitPlatform() again becomes
+  active, and all following gradle command must then have the format
+  ala
+
+    ./gradlew test 
+
+  History:
+
+  Converted to Gradle 6.5, Jacoco 0.8.5, and JUnit 5, Aug 2020
+
+  Converted to Gradle build system, Mar 2018
+
+   Adapted for the SWEA course, 
+     added the 'review' target, Jun 2017
+
+   Updated for hamcrest libraries, Oct 2015
+
+   This source code is from the book 
+     "Flexible, Reliable Software:
+       Using Patterns and Agile Development"
+     published 2010 by CRC Press.
+   Author: 
+     Henrik B Christensen 
+     Computer Science Department
+     Aarhus University
+   
+   This source code is provided WITHOUT ANY WARRANTY either 
+   expressed or implied. You may study, use, modify, and 
+   distribute it for non-commercial purposes. For any 
+   commercial use, see http://www.baerbak.com/
+   */
+
+apply plugin: 'java'
+apply plugin: 'jacoco'
+
+repositories {
+    jcenter()
+
+    maven {
+        url 'https://dl.bintray.com/henrikbaerbak/maven'
+    }
+}
+    
+dependencies {
+    // Depend on JUnit 5. Require both API and Engine
+    testImplementation group: 'org.junit.jupiter',
+       name: 'junit-jupiter-api', version: '5.6.2'
+    testRuntimeOnly group: 'org.junit.jupiter',
+       name: 'junit-jupiter-engine', version: '5.6.2'
+
+    // Use the Hamcrest matcher library
+    testCompile group: 'org.hamcrest',
+        name: 'hamcrest-library', version: '2.2'
+    compile 'com.baerbak.maven:hotciv-fractal:1.0'
+
+    // Depend on the MiniDraw library
+    implementation 'com.baerbak.maven:minidraw:1.13'
+
+    // Depend on JUnit 5. Require both API and Engine
+    testImplementation group: 'org.junit.jupiter',
+            name: 'junit-jupiter-api', version: '5.6.2'
+    testRuntimeOnly group: 'org.junit.jupiter',
+            name: 'junit-jupiter-engine', version: '5.6.2'
+
+    // Use the Hamcrest matcher library
+    testCompile group: 'org.hamcrest',
+            name: 'hamcrest-library', version: '2.2'
+
+    // Use Broker
+    compile 'com.baerbak.maven:broker:2.0'
+}
+
+// Tell to use JUnit as testing platform
+test {
+    useJUnitPlatform()
+}
+
+// Sigh, JUnit 5 only works with JUnit 4.6+, so upgrade gradle
+wrapper {
+  gradleVersion = '6.5'
+}
+
+// Use latest Jacoco test coverage tool
+jacoco {
+  toolVersion = "0.8.5"
+}
+
+// === Execution tasks - for running the various integration tests
+//     for manual test-driving the MiniDraw framework customization.
+
+// === Demonstrate specialized MiniDraw implementations
+
+task show(type: JavaExec) {
+    group 'SWEA HotCiv Demonstration'
+    description 'Demonstrate MapView'
+
+    main = 'hotciv.visual.ShowWorld'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task text(type: JavaExec) {
+    group 'SWEA HotCiv Demonstration'
+    description 'Demonstrate TextFigure'
+
+    main = 'hotciv.visual.ShowText'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task city(type: JavaExec) {
+    group 'SWEA HotCiv Demonstration'
+    description 'Demonstrate CityFigure'
+
+    main = 'hotciv.visual.ShowCity'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+// === Placeholders for YOUR work on solving SWEA exercises
+
+task update(type: JavaExec) {
+    group 'SWEA Mandatory'
+    description 'Test CivDrawing, FRAS 36.38 (partially solved)'
+
+    main = 'hotciv.visual.ShowUpdating'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task move(type: JavaExec) {
+    group 'SWEA Mandatory'
+    description 'Test UnitMoveTool, FRS 36.39'
+
+    main = 'hotciv.visual.ShowMove'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task setfocus(type: JavaExec) {
+    group 'SWEA Mandatory'
+    description 'Test SetFocusTool, FRS 36.40'
+
+    main = 'hotciv.visual.ShowSetFocus'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task turn(type: JavaExec) {
+    group 'SWEA Mandatory'
+    description 'Test EndOfTurnTool, FRS 36.42 (partially solved)'
+
+    main = 'hotciv.visual.ShowEndOfTurn'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task action(type: JavaExec) {
+    group 'SWEA Mandatory'
+    description 'Test ActionTool, FRS 36.43'
+
+    main = 'hotciv.visual.ShowAction'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task comp(type: JavaExec) {
+    group 'SWEA Mandatory'
+    description 'Test CompositionTool, FRS 36.44 (partially solved)'
+
+    main = 'hotciv.visual.ShowComposition'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task semi(type: JavaExec) {
+    group 'SWEA Mandatory'
+    description ' Play SemiCiv using the GUI :-)'
+
+    main = 'hotciv.visual.ShowSemi'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task hotcivStoryServer(type: JavaExec) {
+    group 'SWEA Distribution'
+    description 'Run HotCiv server (Socket)'
+
+    classpath sourceSets.test.runtimeClasspath
+    main = 'hotciv.server.HotCivStoryServer'
+    args port
+}
+
+task hotCivStoryTest(type: JavaExec) {
+    group 'SWEA Distribution'
+    description 'Run HotCiv storytest'
+
+    classpath sourceSets.test.runtimeClasspath
+    main = 'hotciv.client.HotCivStoryTest'
+    args host, port
+}
+
+task hotcivServer(type: JavaExec) {
+    group 'SWEA Distribution'
+    description 'Run HotCiv server (Socket)'
+
+    classpath sourceSets.test.runtimeClasspath
+    main = 'hotciv.server.HotCivServer'
+    args port
+}
+
+task hotCivClient(type: JavaExec) {
+    group 'SWEA Distribution'
+    description 'Run HotCivClient'
+
+    classpath sourceSets.test.runtimeClasspath
+    main = 'hotciv.client.HotCivClient'
+    args host, port
+}
