@@ -85,10 +85,10 @@ The repository is organized as follows:
 │       │       └── standard/
 ```
 
-## License
-This project is licensed under the MIT License.
-
 ## Acknowledgements
 Henrik Bærbak Christensen, Department of Computer Science, Aarhus University
 
 The course Software Construction and Software Architecture at Aarhus University
+
+## License
+This project is licensed under the MIT License.
