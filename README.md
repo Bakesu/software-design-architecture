@@ -1,6 +1,15 @@
 # Software Design and Architecture
 This repository contains the project developed for the course Software Construction and Software Architecture at Aarhus University. The project showcases various software design patterns and architectural principles applied in a Java-based game called HotCiv. This project was developed in collaboration with another student, primarily through pair programming.
 
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Key Files and Directories](#key-files-and-directories)
+- [Examples of Used Design Patterns](#examples-of-used-design-patterns)
+- [Repository Structure](#repository-structure)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
+
 ## Project Overview
 HotCiv is a turn-based strategy game where players control units and cities on a grid-based map. The game includes different variants, each with unique rules and strategies. This project demonstrates the use of design patterns and architectural principles to create a flexible and extensible game framework.
 
